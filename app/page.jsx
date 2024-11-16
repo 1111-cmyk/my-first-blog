@@ -1,18 +1,32 @@
+import fetchPosts from "@/service/getPosts";
+import Link from "next/link";
 import React from "react";
-import Posts from "./pages/posts/page"; // Importing the Posts component
-import fetchPosts from "@/service/getPosts"; // Importing the fetchPosts service to retrieve posts data
 
-async function Home() {
-  // Fetching posts data asynchronously
-  let posts_data = await fetchPosts();
+// Styling object
+const style = {
+  post_container: `flex flex-col space-y-5 items-center py-8 px-4`,
+  link: `shadow-md rounded-md w-full min-h-14 bg-white/80 text-center flex items-center justify-center hover:scale-105 transition-all duration-700`,
+};
 
-  // Returning the Home component JSX with Posts component and passing posts_data as props
+// Component to display posts
+async function Posts() {
+  const posts = await fetchPosts();
+
   return (
-    <div className="px-8 py-4">
-      <Posts posts={posts_data} />{" "}
-      {/* Passing the fetched posts data to the Posts component */}
+    <div className={style.post_container}>
+      {/* Mapping through the posts and rendering them as clickable links */}
+      {posts.map((post) => (
+        <Link
+          key={post.id}
+          href={`/sections/posts/${post.id}`} // Navigate to a dynamic post page
+          className={style.link}
+        >
+          {console.log("Posts", `/sections/posts/${post.id}`)}
+          {post.title} {/* Displaying the post title */}
+        </Link>
+      ))}
     </div>
   );
 }
 
-export default Home;
+export default Posts;

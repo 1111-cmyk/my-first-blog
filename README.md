@@ -16,7 +16,7 @@ To run the project locally, follow these steps:
 ### 1. Clone the repository:
 
 ```bash
-git clone https://github.com/your-username/my-first-blog.git
+1.git clone https://github.com/1111-cmyk/my-first-blog.git
 cd my-first-blog
 2. Install dependencies:
 Make sure you have Node.js installed. Then, install the required dependencies:
@@ -31,6 +31,7 @@ Go to Firebase Console.
 Create a Firebase project if you don't have one.
 Set up Firestore and get the Firebase config from your project settings.
 Replace the Firebase config in connection/firebaseConfig.js with your own.
+
 4. Run the development server:
 Start the development server by running:
 
@@ -47,3 +48,4 @@ service/getPosts.js: Contains functions to fetch posts from Firebase.
 connection/firebaseConfig.js: Firebase configuration file to initialize Firestore.
 Data Flow The application uses Static Site Generation (SSG) to pre-generate the list of posts. When a user clicks on a post, it dynamically fetches and displays the content using its ID.
 
+```
